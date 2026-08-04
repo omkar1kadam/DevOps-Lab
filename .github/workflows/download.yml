@@ -1,0 +1,38 @@
+name: Download YouTube Audio
+
+on:
+  push:
+    paths:
+      - "input/**"
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Download Videos
+        run: |
+          python src/main.py
+
+      - name: Upload Downloads
+        uses: actions/upload-artifact@v4
+        with:
+          name: downloaded-audio
+          path: downloads/
