@@ -11,8 +11,8 @@ ydl_opts = {
     "outtmpl": str(DOWNLOAD_DIR / "%(title)s.%(ext)s"),
     "quiet": False,
     "noplaylist": True,
+    "force_ipv4": True,
 }
-
 txt_files = list(INPUT_DIR.glob("*.txt"))
 
 if not txt_files:
