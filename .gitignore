@@ -5,3 +5,7 @@ downloads/
 *.webm
 *.mp3
 *.mp4
+cookies.txt
+cookies.b64
+cookies.gz
+cookies.gz.b64
